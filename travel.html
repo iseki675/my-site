@@ -17,7 +17,8 @@
             font-family: 'Noto Sans JP', sans-serif;
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #a8e6cf 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
+            font-size: 14px;
         }
 
         .container {
@@ -25,8 +26,8 @@
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
 
@@ -34,25 +35,25 @@
             background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
             color: white;
             text-align: center;
-            padding: 30px 20px;
+            padding: 25px 15px;
             position: relative;
         }
 
         .header::before {
             content: '✈️';
             position: absolute;
-            top: 10px;
-            left: 20px;
-            font-size: 30px;
+            top: 8px;
+            left: 15px;
+            font-size: 24px;
             animation: bounce 2s infinite;
         }
 
         .header::after {
             content: '🌸';
             position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 30px;
+            top: 8px;
+            right: 15px;
+            font-size: 24px;
             animation: bounce 2s infinite 1s;
         }
 
@@ -61,48 +62,50 @@
                 transform: translateY(0);
             }
             40% {
-                transform: translateY(-10px);
+                transform: translateY(-8px);
             }
             60% {
-                transform: translateY(-5px);
+                transform: translateY(-4px);
             }
         }
 
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 1.8em;
+            margin-bottom: 8px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .date {
-            font-size: 1.2em;
+            font-size: 1em;
             opacity: 0.9;
         }
 
         .content {
-            padding: 40px 30px;
+            padding: 25px 15px;
         }
 
         .route {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 40px;
-            font-size: 1.5em;
+            margin-bottom: 25px;
+            font-size: 1.1em;
             color: #666;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .route .city {
-            padding: 10px 20px;
+            padding: 8px 16px;
             background: linear-gradient(45deg, #ff9a9e, #fecfef);
             color: white;
-            border-radius: 20px;
-            margin: 0 10px;
-            box-shadow: 0 5px 15px rgba(255, 154, 158, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(255, 154, 158, 0.3);
+            font-size: 1em;
         }
 
         .arrow {
-            font-size: 2em;
+            font-size: 1.5em;
             color: #ff6b6b;
         }
 
@@ -113,19 +116,19 @@
         .schedule-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            border-left: 5px solid;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid;
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .schedule-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
         }
 
         .schedule-item:nth-child(1) { border-left-color: #ff6b6b; }
@@ -140,72 +143,140 @@
         .time {
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
+            padding: 6px 12px;
+            border-radius: 15px;
             font-weight: 500;
-            min-width: 100px;
+            min-width: 60px;
             text-align: center;
-            margin-right: 20px;
-            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+            margin-right: 12px;
+            box-shadow: 0 3px 8px rgba(102, 126, 234, 0.3);
+            font-size: 0.9em;
+            flex-shrink: 0;
         }
 
         .activity {
             flex: 1;
+            min-width: 0;
         }
 
         .activity-title {
             font-weight: 700;
-            font-size: 1.3em;
+            font-size: 1.1em;
             color: #333;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            line-height: 1.3;
         }
 
         .activity-desc {
             color: #666;
-            line-height: 1.6;
+            line-height: 1.5;
+            font-size: 0.95em;
         }
 
         .icon {
-            font-size: 1.5em;
-            margin-left: 15px;
+            font-size: 1.3em;
+            margin-left: 10px;
+            flex-shrink: 0;
         }
 
         .footer {
             background: linear-gradient(45deg, #a8e6cf, #88d8c0);
             text-align: center;
-            padding: 20px;
+            padding: 20px 15px;
             color: white;
-            font-size: 1.1em;
+            font-size: 1em;
         }
 
         .divider {
             height: 2px;
             background: linear-gradient(90deg, transparent, #ff9a9e, transparent);
-            margin: 30px 0;
+            margin: 20px 0;
         }
 
-        @media (max-width: 600px) {
+        /* スマホ向けの追加調整 */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+                font-size: 13px;
+            }
+            
             .container {
-                margin: 10px;
-                border-radius: 20px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 20px 10px;
             }
             
             .header h1 {
-                font-size: 2em;
+                font-size: 1.6em;
+            }
+            
+            .content {
+                padding: 20px 12px;
             }
             
             .route {
-                flex-direction: column;
-                gap: 10px;
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+            
+            .route .city {
+                padding: 6px 12px;
+                font-size: 0.9em;
             }
             
             .schedule-item {
+                padding: 12px;
+                margin-bottom: 12px;
                 flex-direction: column;
-                gap: 15px;
+                align-items: flex-start;
+                gap: 8px;
             }
             
             .time {
+                margin-right: 0;
                 align-self: flex-start;
+                min-width: 55px;
+                padding: 5px 10px;
+                font-size: 0.85em;
+            }
+            
+            .activity-title {
+                font-size: 1em;
+                margin-bottom: 4px;
+            }
+            
+            .activity-desc {
+                font-size: 0.9em;
+            }
+            
+            .icon {
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                margin-left: 0;
+                font-size: 1.2em;
+            }
+            
+            .footer {
+                padding: 15px 10px;
+                font-size: 0.95em;
+            }
+        }
+
+        /* 極小画面向け */
+        @media (max-width: 320px) {
+            .header h1 {
+                font-size: 1.4em;
+            }
+            
+            .activity-title {
+                font-size: 0.95em;
+            }
+            
+            .activity-desc {
+                font-size: 0.85em;
             }
         }
     </style>
@@ -293,10 +364,21 @@
                 <li class="schedule-item">
                     <div class="time">18:00</div>
                     <div class="activity">
-                        <div class="activity-title">ホテル到着・夜ごはん</div>
-                        <div class="activity-desc">ホテルでチェックインして、美味しい夜ごはんで一日を締めくくり</div>
+                        <div class="activity-title">HOTEL R9 The Yard 長浜 チェックイン</div>
+                        <div class="activity-desc">ホテルでチェックイン手続きを済ませて一息つこう</div>
                     </div>
                     <div class="icon">🏨</div>
+                </li>
+
+                <li class="schedule-item">
+                    <div class="time">18:30</div>
+                    <div class="activity">
+                        <div class="activity-title">長濱浪漫ビール（予約済み）</div>
+                        <div class="activity-desc">地ビールと美味しい料理で乾杯！<br>
+                        📍 滋賀県長浜市朝日町14-1<br>
+                        🚶‍♂️ ホテルから徒歩約5分</div>
+                    </div>
+                    <div class="icon">🍺</div>
                 </li>
             </ul>
         </div>
