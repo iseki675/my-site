@@ -109,8 +109,39 @@
             color: #ff6b6b;
         }
 
+        .day-header {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin: 20px 0 15px 0;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 1.2em;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
         .schedule {
             list-style: none;
+            margin-bottom: 30px;
         }
 
         .schedule-item {
@@ -131,14 +162,28 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
         }
 
-        .schedule-item:nth-child(1) { border-left-color: #ff6b6b; }
-        .schedule-item:nth-child(2) { border-left-color: #4ecdc4; }
-        .schedule-item:nth-child(3) { border-left-color: #45b7d1; }
-        .schedule-item:nth-child(4) { border-left-color: #96ceb4; }
-        .schedule-item:nth-child(5) { border-left-color: #ffeaa7; }
-        .schedule-item:nth-child(6) { border-left-color: #dda0dd; }
-        .schedule-item:nth-child(7) { border-left-color: #ff7675; }
-        .schedule-item:nth-child(8) { border-left-color: #a29bfe; }
+        /* Day 1 colors */
+        .day1 .schedule-item:nth-child(1) { border-left-color: #ff6b6b; }
+        .day1 .schedule-item:nth-child(2) { border-left-color: #4ecdc4; }
+        .day1 .schedule-item:nth-child(3) { border-left-color: #45b7d1; }
+        .day1 .schedule-item:nth-child(4) { border-left-color: #96ceb4; }
+        .day1 .schedule-item:nth-child(5) { border-left-color: #ffeaa7; }
+        .day1 .schedule-item:nth-child(6) { border-left-color: #dda0dd; }
+        .day1 .schedule-item:nth-child(7) { border-left-color: #ff7675; }
+        .day1 .schedule-item:nth-child(8) { border-left-color: #a29bfe; }
+        .day1 .schedule-item:nth-child(9) { border-left-color: #fd79a8; }
+
+        /* Day 2 colors */
+        .day2 .schedule-item:nth-child(1) { border-left-color: #00b894; }
+        .day2 .schedule-item:nth-child(2) { border-left-color: #e17055; }
+        .day2 .schedule-item:nth-child(3) { border-left-color: #0984e3; }
+        .day2 .schedule-item:nth-child(4) { border-left-color: #00cec9; }
+        .day2 .schedule-item:nth-child(5) { border-left-color: #fdcb6e; }
+        .day2 .schedule-item:nth-child(6) { border-left-color: #6c5ce7; }
+        .day2 .schedule-item:nth-child(7) { border-left-color: #a29bfe; }
+        .day2 .schedule-item:nth-child(8) { border-left-color: #fd79a8; }
+        .day2 .schedule-item:nth-child(9) { border-left-color: #e84393; }
+        .day2 .schedule-item:nth-child(10) { border-left-color: #00b894; }
 
         .time {
             background: linear-gradient(45deg, #667eea, #764ba2);
@@ -225,6 +270,12 @@
                 padding: 6px 12px;
                 font-size: 0.9em;
             }
+
+            .day-header {
+                font-size: 1.1em;
+                padding: 12px;
+                margin: 15px 0 10px 0;
+            }
             
             .schedule-item {
                 padding: 12px;
@@ -278,6 +329,10 @@
             .activity-desc {
                 font-size: 0.85em;
             }
+
+            .day-header {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
@@ -285,7 +340,7 @@
     <div class="container">
         <div class="header">
             <h1>旅のしおり</h1>
-            <div class="date">素敵な一日の旅</div>
+            <div class="date">素敵な2日間の旅</div>
         </div>
 
         <div class="content">
@@ -293,98 +348,219 @@
                 <span class="city">福井</span>
                 <span class="arrow">→</span>
                 <span class="city">滋賀</span>
+                <span class="arrow">→</span>
+                <span class="city">福井</span>
             </div>
 
             <div class="divider"></div>
 
-            <ul class="schedule">
-                <li class="schedule-item">
-                    <div class="time">7:00</div>
-                    <div class="activity">
-                        <div class="activity-title">福井出発</div>
-                        <div class="activity-desc">いよいよ楽しい旅の始まり！気をつけて行ってらっしゃい</div>
-                    </div>
-                    <div class="icon">🚗</div>
-                </li>
+            <div class="day-header">📅 1日目</div>
+            
+            <div class="day1">
+                <ul class="schedule">
+                    <li class="schedule-item">
+                        <div class="time">7:00</div>
+                        <div class="activity">
+                            <div class="activity-title">福井出発</div>
+                            <div class="activity-desc">いよいよ楽しい旅の始まり！気をつけて行ってらっしゃい</div>
+                        </div>
+                        <div class="icon">🚗</div>
+                    </li>
 
-                <li class="schedule-item">
-                    <div class="time">9:30</div>
-                    <div class="activity">
-                        <div class="activity-title">ラコリーナ バームクーヘン</div>
-                        <div class="activity-desc">有名なバームクーヘンを味わって、甘い旅の思い出をスタート</div>
-                    </div>
-                    <div class="icon">🍰</div>
-                </li>
+                    <li class="schedule-item">
+                        <div class="time">9:30</div>
+                        <div class="activity">
+                            <div class="activity-title">ラコリーナ バームクーヘン</div>
+                            <div class="activity-desc">有名なバームクーヘンを味わって、甘い旅の思い出をスタート</div>
+                        </div>
+                        <div class="icon">🍰</div>
+                    </li>
 
-                <li class="schedule-item">
-                    <div class="time">11:00</div>
-                    <div class="activity">
-                        <div class="activity-title">menju へ向かう</div>
-                        <div class="activity-desc">次の目的地へ移動中</div>
-                    </div>
-                    <div class="icon">🚙</div>
-                </li>
+                    <li class="schedule-item">
+                        <div class="time">11:00</div>
+                        <div class="activity">
+                            <div class="activity-title">menju へ向かう</div>
+                            <div class="activity-desc">次の目的地へ移動中</div>
+                        </div>
+                        <div class="icon">🚙</div>
+                    </li>
 
-                <li class="schedule-item">
-                    <div class="time">11:30</div>
-                    <div class="activity">
-                        <div class="activity-title">menju でランチ</div>
-                        <div class="activity-desc">美味しいお昼ごはんでエネルギーチャージ</div>
-                    </div>
-                    <div class="icon">🍽️</div>
-                </li>
+                    <li class="schedule-item">
+                        <div class="time">11:30</div>
+                        <div class="activity">
+                            <div class="activity-title">menju でランチ</div>
+                            <div class="activity-desc">美味しいお昼ごはんでエネルギーチャージ</div>
+                        </div>
+                        <div class="icon">🍽️</div>
+                    </li>
 
-                <li class="schedule-item">
-                    <div class="time">12:15</div>
-                    <div class="activity">
-                        <div class="activity-title">びわこ箱館山</div>
-                        <div class="activity-desc">ゴンドラ・ジップライン・リフトで大自然を満喫！絶景を楽しもう</div>
-                    </div>
-                    <div class="icon">🏔️</div>
-                </li>
+                    <li class="schedule-item">
+                        <div class="time">12:15</div>
+                        <div class="activity">
+                            <div class="activity-title">びわこ箱館山</div>
+                            <div class="activity-desc">ゴンドラ・ジップライン・リフトで大自然を満喫！絶景を楽しもう</div>
+                        </div>
+                        <div class="icon">🏔️</div>
+                    </li>
 
-                <li class="schedule-item">
-                    <div class="time">14:30</div>
-                    <div class="activity">
-                        <div class="activity-title">黒壁スクエア</div>
-                        <div class="activity-desc">大きな万華鏡をのぞいて、キラキラした世界を体験</div>
-                    </div>
-                    <div class="icon">🔮</div>
-                </li>
+                    <li class="schedule-item">
+                        <div class="time">14:30</div>
+                        <div class="activity">
+                            <div class="activity-title">黒壁スクエア</div>
+                            <div class="activity-desc">大きな万華鏡をのぞいて、キラキラした世界を体験</div>
+                        </div>
+                        <div class="icon">🔮</div>
+                    </li>
 
-                <li class="schedule-item">
-                    <div class="time">16:00</div>
-                    <div class="activity">
-                        <div class="activity-title">梅津大崎ドライブ</div>
-                        <div class="activity-desc">美しい水辺の景色を見ながらゆったりドライブ</div>
-                    </div>
-                    <div class="icon">🌊</div>
-                </li>
+                    <li class="schedule-item">
+                        <div class="time">16:00</div>
+                        <div class="activity">
+                            <div class="activity-title">梅津大崎ドライブ</div>
+                            <div class="activity-desc">美しい水辺の景色を見ながらゆったりドライブ</div>
+                        </div>
+                        <div class="icon">🌊</div>
+                    </li>
 
-                <li class="schedule-item">
-                    <div class="time">18:00</div>
-                    <div class="activity">
-                        <div class="activity-title">HOTEL R9 The Yard 長浜 チェックイン</div>
-                        <div class="activity-desc">ホテルでチェックイン手続きを済ませて一息つこう</div>
-                    </div>
-                    <div class="icon">🏨</div>
-                </li>
+                    <li class="schedule-item">
+                        <div class="time">18:00</div>
+                        <div class="activity">
+                            <div class="activity-title">HOTEL R9 The Yard 長浜 チェックイン</div>
+                            <div class="activity-desc">ホテルでチェックイン手続きを済ませて一息つこう</div>
+                        </div>
+                        <div class="icon">🏨</div>
+                    </li>
 
-                <li class="schedule-item">
-                    <div class="time">18:30</div>
-                    <div class="activity">
-                        <div class="activity-title">長濱浪漫ビール（予約済み）</div>
-                        <div class="activity-desc">地ビールと美味しい料理で乾杯！<br>
-                        📍 滋賀県長浜市朝日町14-1<br>
-                        🚶‍♂️ ホテルから徒歩約5分</div>
-                    </div>
-                    <div class="icon">🍺</div>
-                </li>
-            </ul>
+                    <li class="schedule-item">
+                        <div class="time">18:30</div>
+                        <div class="activity">
+                            <div class="activity-title">長濱浪漫ビール（予約済み）</div>
+                            <div class="activity-desc">地ビールと美味しい料理で乾杯！<br>
+                            📍 滋賀県長浜市朝日町14-1<br>
+                            🚶‍♂️ ホテルから徒歩約5分</div>
+                        </div>
+                        <div class="icon">🍺</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="day-header">📅 2日目</div>
+            
+            <div class="day2">
+                <ul class="schedule">
+                    <li class="schedule-item">
+                        <div class="time">8:00</div>
+                        <div class="activity">
+                            <div class="activity-title">太郎坊宮</div>
+                            <div class="activity-desc">参拝＆お守り体験で旅の安全を祈願しよう</div>
+                        </div>
+                        <div class="icon">⛩️</div>
+                    </li>
+
+                    <li class="schedule-item">
+                        <div class="time">10:00</div>
+                        <div class="activity">
+                            <div class="activity-title">フェルトストラップ作り</div>
+                            <div class="activity-desc">ローザンベリー多和田でオリジナルストラップを手作り体験</div>
+                        </div>
+                        <div class="icon">🎨</div>
+                    </li>
+
+                    <li class="schedule-item">
+                        <div class="time">11:30</div>
+                        <div class="activity">
+                            <div class="activity-title">ガーデン内カフェ休憩</div>
+                            <div class="activity-desc">美しい庭園を眺めながらのんびりティータイム</div>
+                        </div>
+                        <div class="icon">☕</div>
+                    </li>
+
+                    <li class="schedule-item">
+                        <div class="time">12:00</div>
+                        <div class="activity">
+                            <div class="activity-title">移動（米原 → 長浜）</div>
+                            <div class="activity-desc">次の目的地へ移動</div>
+                        </div>
+                        <div class="icon">🚗</div>
+                    </li>
+
+                    <li class="schedule-item">
+                        <div class="time">12:30</div>
+                        <div class="activity">
+                            <div class="activity-title">海洋堂フィギュアミュージアム</div>
+                            <div class="activity-desc">展示見学＆ショップでお土産探し。精巧なフィギュアの世界を堪能</div>
+                        </div>
+                        <div class="icon">🎎</div>
+                    </li>
+
+                    <li class="schedule-item">
+                        <div class="time">13:30</div>
+                        <div class="activity">
+                            <div class="activity-title">彦根城エリア散策</div>
+                            <div class="activity-desc">天守見学or城下町で食べ歩き。歴史と美味しいグルメを満喫</div>
+                        </div>
+                        <div class="icon">🏯</div>
+                    </li>
+
+                    <li class="schedule-item">
+                        <div class="time">14:30</div>
+                        <div class="activity">
+                            <div class="activity-title">移動＆琵琶湖博物館到着</div>
+                            <div class="activity-desc">琵琶湖の自然と文化を学ぶ博物館へ</div>
+                        </div>
+                        <div class="icon">🚙</div>
+                    </li>
+
+                    <li class="schedule-item">
+                        <div class="time">15:30</div>
+                        <div class="activity">
+                            <div class="activity-title">琵琶湖博物館見学</div>
+                            <div class="activity-desc">水族館エリアも◎ 琵琶湖の生き物や歴史に触れよう</div>
+                        </div>
+                        <div class="icon">🐟</div>
+                    </li>
+
+                    <li class="schedule-item">
+                        <div class="time">16:30</div>
+                        <div class="activity">
+                            <div class="activity-title">草津市内へ移動</div>
+                            <div class="activity-desc">最後のディナースポットへ向かいましょう</div>
+                        </div>
+                        <div class="icon">🚗</div>
+                    </li>
+
+                    <li class="schedule-item">
+                        <div class="time">17:00</div>
+                        <div class="activity">
+                            <div class="activity-title">カフェやホテル周辺でひと休み</div>
+                            <div class="activity-desc">ディナー前の小休憩でリフレッシュ</div>
+                        </div>
+                        <div class="icon">☕</div>
+                    </li>
+
+                    <li class="schedule-item">
+                        <div class="time">18:30</div>
+                        <div class="activity">
+                            <div class="activity-title">原価ビストロ チーズプラス 草津店（予約済み）</div>
+                            <div class="activity-desc">旅の締めくくりはチーズたっぷりの美味しいディナーで！</div>
+                        </div>
+                        <div class="icon">🧀</div>
+                    </li>
+
+                    <li class="schedule-item">
+                        <div class="time">20:30</div>
+                        <div class="activity">
+                            <div class="activity-title">福井へ帰路</div>
+                            <div class="activity-desc">高速利用で約2時間〜2時間半。お疲れさまでした！素敵な思い出をたくさん持って帰ろう</div>
+                        </div>
+                        <div class="icon">🏠</div>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="footer">
-            素敵な一日になりますように ✨
+            素敵な2日間になりますように ✨<br>
+            たくさんの思い出を作ってください 💕
         </div>
     </div>
 </body>
