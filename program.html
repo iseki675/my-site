@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProGram — プログラミング基礎ガイド</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">Pro<span class="accent">Gram</span></div>
+      <nav class="main-nav">
+        <ul id="nav-list"></ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="progress-bar" id="progress-bar"></div>
+  </header>
+
+  <!-- モバイルドロワー -->
+  <div class="drawer" id="drawer">
+    <ul id="drawer-nav-list"></ul>
+  </div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <!-- ヒーロー -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-label">Programming Fundamentals</div>
+      <h1 class="hero-title">プログラミングの<br><em>基礎</em>を学ぼう</h1>
+      <p class="hero-desc">文字の表示から関数・ファイル処理まで、ステップバイステップで解説。各章に用語集付き。</p>
+      <div class="hero-actions">
+        <a href="#chapter-1" class="btn-start">さっそく始める <span class="arrow">→</span></a>
+        <a href="setup.html" class="btn-setup">⚙ 開発環境を整える</a>
+      </div>
+    </div>
+    <div class="hero-code-preview">
+<pre><code><span class="kw">print</span>(<span class="str">"Hello, World!"</span>)
+<span class="cm"># → Hello, World!</span>
+
+<span class="kw">def</span> <span class="fn">greet</span>(name):
+    <span class="kw">return</span> <span class="str">f"こんにちは、{name}！"</span>
+
+<span class="kw">print</span>(greet(<span class="str">"学習者"</span>))
+<span class="cm"># → こんにちは、学習者！</span></code></pre>
+    </div>
+  </section>
+
+  <!-- チャプター一覧 -->
+  <main class="main-content">
+    <div class="chapter-timeline" id="chapters-container"></div>
+  </main>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">Pro<span class="accent">Gram</span></div>
+      <p class="footer-copy">プログラミング学習リファレンス</p>
+    </div>
+  </footer>
+
+  <!-- 用語モーダル -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modal-close">×</button>
+      <div class="modal-tag">用語解説</div>
+      <h3 class="modal-term" id="modal-term"></h3>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="modal-example" id="modal-example"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
