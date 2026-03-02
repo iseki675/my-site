@@ -177,6 +177,31 @@ body {
 }
 .drawer a:hover { color: var(--accent); background: rgba(232,255,90,.08); }
 
+/* ドロワー内のリンクセクション（他ページへのナビ） */
+.drawer-links {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+.drawer-link-item {
+  display: block;
+  padding: .6rem 1rem;
+  font-size: .82rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: .2s;
+}
+.drawer-link-item:hover {
+  color: var(--accent2);
+  border-color: rgba(90,240,232,.25);
+  background: rgba(90,240,232,.05);
+}
+
 .drawer-overlay {
   position: fixed;
   inset: 64px 0 0 0;
@@ -822,6 +847,14 @@ body {
   margin-top: .15rem;
 }
 
+/* バナー内リンク群 */
+.pb-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-top: 1.2rem;
+}
+
 @media (max-width: 768px) {
   .chapter-banner-wrap {
     padding-left: 56px;
@@ -859,20 +892,53 @@ body {
   background: rgba(90,240,232,.06);
 }
 
+/* ツールボタン：accent3（赤橙系）でsetupと区別 */
+.btn-tools {
+  color: var(--text-dim);
+  border-color: var(--line);
+}
+.btn-tools:hover {
+  color: #ffd060;
+  border-color: rgba(255,208,96,.4);
+  background: rgba(255,208,96,.06);
+}
+
 /* Python バナー内セットアップリンク */
 .pb-setup-link {
   display: inline-flex;
   align-items: center;
-  margin-top: 1.2rem;
   font-family: var(--font-code);
   font-size: .78rem;
-  color: var(--blue, #4B8BBE);
+  color: #4B8BBE;
   text-decoration: none;
-  border-bottom: 1px solid rgba(75,139,190,.35);
-  padding-bottom: 1px;
-  transition: border-color .2s, color .2s;
+  border: 1px solid rgba(75,139,190,.3);
+  background: rgba(75,139,190,.07);
+  padding: .3rem .9rem;
+  border-radius: 100px;
+  transition: border-color .2s, color .2s, background .2s;
 }
 .pb-setup-link:hover {
   color: var(--accent2);
-  border-bottom-color: var(--accent2);
+  border-color: rgba(90,240,232,.4);
+  background: rgba(90,240,232,.07);
+}
+
+/* バナー内ツールリンク */
+.pb-tools-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-code);
+  font-size: .78rem;
+  color: #ffd060;
+  text-decoration: none;
+  border: 1px solid rgba(255,208,96,.3);
+  background: rgba(255,208,96,.06);
+  padding: .3rem .9rem;
+  border-radius: 100px;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.pb-tools-link:hover {
+  color: var(--accent);
+  border-color: rgba(232,255,90,.4);
+  background: rgba(232,255,90,.07);
 }
