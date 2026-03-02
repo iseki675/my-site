@@ -220,7 +220,10 @@ const CHAPTERS = [
       <span>原理を覚えれば他言語への応用も簡単</span>
     </div>
   </div>
-  <a href="setup.html" class="pb-setup-link">⚙ まだ環境が整っていない方はこちら → 開発環境セットアップガイド</a>
+  <div class="pb-links">
+    <a href="setup.html" class="pb-setup-link">⚙ まだ環境が整っていない方はこちら → 開発環境セットアップガイド</a>
+    <a href="tools.html" class="pb-tools-link">🛠 VS Code・ターミナルって何？ → 開発ツール入門</a>
+  </div>
 </div>`
   },
   {
@@ -638,34 +641,41 @@ const CHAPTERS = [
 // DOM生成
 // ===========================
 function buildNav() {
-  const navList = document.getElementById("nav-list");
+  const navList    = document.getElementById("nav-list");
   const drawerList = document.getElementById("drawer-nav-list");
 
   CHAPTERS.forEach(ch => {
-    if (ch.isBanner) return; // バナーはナビに表示しない
+    if (ch.isBanner) return;
     const li = document.createElement("li");
-    const a = document.createElement("a");
+    const a  = document.createElement("a");
     a.href = `#${ch.id}`;
-    // ナビリンク：番号＋タイトルを2行で
     const num = ch.tag.replace("CHAPTER ", "");
     a.innerHTML = `<span class="nav-num">Ch.${num}</span><span class="nav-name">${ch.title}</span>`;
     a.title = ch.title;
 
     const dLi = li.cloneNode();
-    const dA = a.cloneNode(true);
+    const dA  = a.cloneNode(true);
 
     li.appendChild(a);
     dLi.appendChild(dA);
     navList.appendChild(li);
     drawerList.appendChild(dLi);
   });
+
+  // ドロワーに他ページへのリンクを追加
+  const drawerLinks = document.createElement("div");
+  drawerLinks.classList.add("drawer-links");
+  drawerLinks.innerHTML = `
+    <a href="setup.html" class="drawer-link-item">⚙ 開発環境セットアップ</a>
+    <a href="tools.html" class="drawer-link-item">🛠 開発ツール入門</a>
+  `;
+  document.getElementById("drawer").appendChild(drawerLinks);
 }
 
 function buildChapters() {
   const container = document.getElementById("chapters-container");
 
   CHAPTERS.forEach((ch, idx) => {
-    // バナーチャプターは専用レンダリング
     if (ch.isBanner) {
       const div = document.createElement("div");
       div.classList.add("chapter-banner-wrap");
@@ -678,13 +688,13 @@ function buildChapters() {
     section.classList.add("chapter");
     section.id = ch.id;
 
-    // 用語ピル HTML
     const termPills = (ch.terms || []).map(t =>
       `<button class="term-pill" data-term="${encodeURIComponent(JSON.stringify(t))}">${t.word}</button>`
     ).join("");
 
-    const badgeNum = ch.id === "chapter-0" ? "00" : String(idx - 1).padStart(2, "0");
+    const badgeNum  = ch.id === "chapter-0" ? "00" : String(idx - 1).padStart(2, "0");
     const codeLabel = ch.id === "chapter-0" ? "擬似コード" : "Python";
+
     section.innerHTML = `
       <div class="chapter-badge">${badgeNum}</div>
       <div class="chapter-meta">
@@ -717,7 +727,6 @@ function initCopyButtons() {
   document.querySelectorAll(".copy-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       const code = btn.closest(".code-block").querySelector("pre code");
-      // テキストコンテンツを取得（HTMLタグを除去）
       const text = code.textContent;
       navigator.clipboard.writeText(text).then(() => {
         btn.textContent = "✓ コピー済み";
@@ -737,10 +746,10 @@ function initCopyButtons() {
 // 用語モーダル
 // ===========================
 function initModal() {
-  const overlay = document.getElementById("modal-overlay");
-  const termEl  = document.getElementById("modal-term");
-  const descEl  = document.getElementById("modal-desc");
-  const exEl    = document.getElementById("modal-example");
+  const overlay  = document.getElementById("modal-overlay");
+  const termEl   = document.getElementById("modal-term");
+  const descEl   = document.getElementById("modal-desc");
+  const exEl     = document.getElementById("modal-example");
   const closeBtn = document.getElementById("modal-close");
 
   document.addEventListener("click", e => {
@@ -784,20 +793,18 @@ function initProgressBar() {
   const bar = document.getElementById("progress-bar");
   window.addEventListener("scroll", () => {
     const total = document.body.scrollHeight - window.innerHeight;
-    const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+    const pct   = total > 0 ? (window.scrollY / total) * 100 : 0;
     bar.style.width = pct + "%";
   }, { passive: true });
 }
 
 // ===========================
-// スクロールアニメーション（IntersectionObserver）
+// スクロールアニメーション
 // ===========================
 function initScrollReveal() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
+      if (entry.isIntersecting) entry.target.classList.add("visible");
     });
   }, { threshold: 0.1 });
 
@@ -810,7 +817,7 @@ function initScrollReveal() {
 function initActiveNav() {
   const sections = document.querySelectorAll(".chapter");
   const navLinks = document.querySelectorAll(".main-nav a, .drawer a");
-  const navUl = document.querySelector(".main-nav ul");
+  const navUl    = document.querySelector(".main-nav ul");
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -819,11 +826,10 @@ function initActiveNav() {
           const isActive = link.getAttribute("href") === `#${entry.target.id}`;
           link.classList.toggle("active", isActive);
 
-          // アクティブなリンクをナビ内で見える位置にスクロール
           if (isActive && link.closest(".main-nav") && navUl) {
-            const linkLeft = link.offsetLeft;
+            const linkLeft  = link.offsetLeft;
             const linkWidth = link.offsetWidth;
-            const navWidth = navUl.offsetWidth;
+            const navWidth  = navUl.offsetWidth;
             navUl.scrollTo({
               left: linkLeft - navWidth / 2 + linkWidth / 2,
               behavior: "smooth"
@@ -854,7 +860,6 @@ function initHamburger() {
   btn.addEventListener("click", toggle);
   overlay.addEventListener("click", toggle);
 
-  // ドロワーリンクをクリックしたら閉じる
   drawer.querySelectorAll("a").forEach(a => {
     a.addEventListener("click", () => {
       drawer.classList.remove("open");
