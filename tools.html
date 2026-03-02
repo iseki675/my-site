@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>開発ツール入門 — ProGram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tools.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="program.html">Pro<span>Gram</span></a>
+      <span class="header-sep">/</span>
+      <span class="header-title">開発ツール入門</span>
+      <a class="back-btn" href="program.html">← 学習に戻る</a>
+    </div>
+    <div class="progress-bar" id="progress-bar"></div>
+  </header>
+
+  <!-- ドロワーオーバーレイ（モバイル用） -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <!-- モバイル用ハンバーガー -->
+  <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- レイアウト -->
+  <div class="page-layout">
+
+    <!-- サイドバー -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-brand">
+          <div class="sidebar-brand-icon">🛠</div>
+          <div>
+            <div class="sidebar-brand-label">TOOLS GUIDE</div>
+            <div class="sidebar-brand-title">開発ツール入門</div>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="sidebar-section-label">ページを選択</div>
+          <ul id="sidebar-list">
+            <li>
+              <button class="sidebar-item active" data-page="vscode">
+                <span class="sidebar-icon">📝</span>
+                <div class="sidebar-item-text">
+                  <div class="sidebar-item-name">VS Code とは？</div>
+                  <div class="sidebar-item-desc">コードを書くエディタ</div>
+                </div>
+              </button>
+            </li>
+            <li>
+              <button class="sidebar-item" data-page="terminal">
+                <span class="sidebar-icon">⬛</span>
+                <div class="sidebar-item-text">
+                  <div class="sidebar-item-name">ターミナルとは？</div>
+                  <div class="sidebar-item-desc">文字で操作する画面</div>
+                </div>
+              </button>
+            </li>
+            <li>
+              <button class="sidebar-item" data-page="cmd">
+                <span class="sidebar-icon">🪟</span>
+                <div class="sidebar-item-text">
+                  <div class="sidebar-item-name">コマンドプロンプト</div>
+                  <div class="sidebar-item-desc">Windows のターミナル</div>
+                </div>
+              </button>
+            </li>
+            <li>
+              <button class="sidebar-item" data-page="powershell">
+                <span class="sidebar-icon">💙</span>
+                <div class="sidebar-item-text">
+                  <div class="sidebar-item-name">PowerShell</div>
+                  <div class="sidebar-item-desc">より強力なWindows端末</div>
+                </div>
+              </button>
+            </li>
+            <li>
+              <button class="sidebar-item" data-page="comparison">
+                <span class="sidebar-icon">⚖️</span>
+                <div class="sidebar-item-text">
+                  <div class="sidebar-item-name">どれを使えばいい？</div>
+                  <div class="sidebar-item-desc">ツール比較まとめ</div>
+                </div>
+              </button>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-links">
+          <a href="setup.html" class="sidebar-link">⚙ セットアップガイド →</a>
+          <a href="program.html" class="sidebar-link">📖 学習に戻る →</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- メインコンテンツ -->
+    <main class="main-area">
+
+      <!-- ===== PAGE: VS Code ===== -->
+      <article class="page" id="page-vscode" data-active="true">
+        <div class="page-hero" data-color="blue">
+          <div class="page-hero-bg"></div>
+          <div class="page-hero-content">
+            <div class="page-badge">EDITOR</div>
+            <h1 class="page-title">VS Code とは？</h1>
+            <p class="page-subtitle">コードを書くための「メモ帳の超進化版」</p>
+          </div>
+          <div class="page-hero-icon">📝</div>
+        </div>
+
+        <div class="page-body">
+
+          <!-- 一言で言うと -->
+          <div class="highlight-card" data-color="blue">
+            <div class="highlight-icon">💡</div>
+            <div>
+              <div class="highlight-title">一言で言うと</div>
+              <div class="highlight-text">VS Code は <strong>プログラムを書くための高機能テキストエディタ</strong> です。<br>Windowsの「メモ帳」と同じ「文字を書くソフト」ですが、プログラマー向けに作られた超進化版です。</div>
+            </div>
+          </div>
+
+          <!-- メモ帳との比較 -->
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">01</span>メモ帳と何が違うの？</h2>
+
+            <div class="compare-grid">
+              <div class="compare-card bad">
+                <div class="compare-label">📄 普通のメモ帳</div>
+                <ul class="compare-list">
+                  <li>文字を書くだけ</li>
+                  <li>間違いを教えてくれない</li>
+                  <li>どこが何の命令かわからない</li>
+                  <li>保存してファイル実行が必要</li>
+                  <li>追加機能なし</li>
+                </ul>
+              </div>
+              <div class="compare-arrow">→</div>
+              <div class="compare-card good">
+                <div class="compare-label">📝 VS Code</div>
+                <ul class="compare-list">
+                  <li class="good-item">✓ 色分けでコードが読みやすい</li>
+                  <li class="good-item">✓ ミスを赤波線で教えてくれる</li>
+                  <li class="good-item">✓ 入力途中に候補を表示（補完）</li>
+                  <li class="good-item">✓ 中でターミナルを開いて実行できる</li>
+                  <li class="good-item">✓ 拡張機能で機能を追加できる</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- 画面の説明 -->
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">02</span>画面の各部分の名前</h2>
+
+            <div class="ui-diagram">
+              <div class="ui-diagram-title">VS Code の画面構成</div>
+              <div class="ui-areas">
+                <div class="ui-area ui-sidebar-area">
+                  <div class="ui-area-label">サイドバー</div>
+                  <div class="ui-area-desc">ファイル一覧・検索・Git管理などのアイコンが縦に並ぶ</div>
+                </div>
+                <div class="ui-right">
+                  <div class="ui-area ui-editor-area">
+                    <div class="ui-area-label">エディタ</div>
+                    <div class="ui-area-desc">ここにコードを書く（メインの作業スペース）</div>
+                  </div>
+                  <div class="ui-area ui-terminal-area">
+                    <div class="ui-area-label">ターミナル</div>
+                    <div class="ui-area-desc">コマンドを入力してプログラムを実行する場所</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 便利機能 -->
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">03</span>特に便利な機能3つ</h2>
+
+            <div class="feature-cards">
+              <div class="feature-card">
+                <div class="feature-num">1</div>
+                <div class="feature-icon">🎨</div>
+                <div class="feature-name">シンタックスハイライト</div>
+                <div class="feature-desc">「命令」「文字列」「数字」など、コードの種類によって色が変わります。これにより、コードの構造が一目でわかるようになります。</div>
+                <div class="feature-example">
+                  <span class="hl-kw">print</span>(<span class="hl-str">"Hello"</span>, <span class="hl-num">42</span>)
+                </div>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-num">2</div>
+                <div class="feature-icon">🔮</div>
+                <div class="feature-name">コード補完（IntelliSense）</div>
+                <div class="feature-desc">文字を入力すると、続きの候補がリストで表示されます。タイプミスを減らし、コマンドを全部覚えなくていいので初心者に特に便利。</div>
+                <div class="feature-example">
+                  <span class="hl-kw">pri</span><span class="autocomplete">nt ▶ print()</span>
+                </div>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-num">3</div>
+                <div class="feature-icon">🐛</div>
+                <div class="feature-name">エラー表示（Error Lens）</div>
+                <div class="feature-desc">間違いのある行に赤い波線と説明が表示されます。拡張機能を入れると行末に直接エラー内容が出て、すぐ気づけます。</div>
+                <div class="feature-example">
+                  <span class="hl-err">prnt("Hello")  ← エラー: prnt は未定義</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- どこで開ける？ -->
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">04</span>VS Code の開き方</h2>
+
+            <div class="steps-list">
+              <div class="step-item">
+                <div class="step-badge">Windows</div>
+                <div class="step-content">スタートメニュー → 「Visual Studio Code」で検索 → クリック</div>
+              </div>
+              <div class="step-item">
+                <div class="step-badge mac">Mac</div>
+                <div class="step-content">Finder → アプリケーション →「Visual Studio Code」をダブルクリック</div>
+              </div>
+              <div class="step-item">
+                <div class="step-badge tip">💡 コツ</div>
+                <div class="step-content">フォルダを右クリックして「Code で開く」を選ぶと、そのフォルダをプロジェクトとして開けます</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="page-nav-bottom">
+            <button class="page-nav-btn next" data-goto="terminal">次へ：ターミナルとは？ →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== PAGE: Terminal ===== -->
+      <article class="page" id="page-terminal" data-active="false">
+        <div class="page-hero" data-color="green">
+          <div class="page-hero-bg"></div>
+          <div class="page-hero-content">
+            <div class="page-badge">TERMINAL</div>
+            <h1 class="page-title">ターミナルとは？</h1>
+            <p class="page-subtitle">文字を入力してコンピュータを操作する「コックピット」</p>
+          </div>
+          <div class="page-hero-icon">⬛</div>
+        </div>
+
+        <div class="page-body">
+
+          <div class="highlight-card" data-color="green">
+            <div class="highlight-icon">💡</div>
+            <div>
+              <div class="highlight-title">一言で言うと</div>
+              <div class="highlight-text">ターミナルとは <strong>文字を入力してコンピュータに命令を出すウィンドウ</strong> です。<br>クリックやドラッグではなく「コマンド（命令文）」を入力して操作します。</div>
+            </div>
+          </div>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">01</span>なぜターミナルが必要なの？</h2>
+
+            <div class="reason-cards">
+              <div class="reason-card">
+                <div class="reason-icon">🚀</div>
+                <div class="reason-name">Pythonを実行するため</div>
+                <div class="reason-desc">書いたプログラムを動かすには <code>python ファイル名.py</code> と入力します。これはGUI（クリック操作）ではできません。</div>
+              </div>
+              <div class="reason-card">
+                <div class="reason-icon">📦</div>
+                <div class="reason-name">ライブラリをインストールするため</div>
+                <div class="reason-desc"><code>pip install ライブラリ名</code> というコマンドで便利な部品を追加できます。</div>
+              </div>
+              <div class="reason-card">
+                <div class="reason-icon">⚡</div>
+                <div class="reason-name">素早く作業するため</div>
+                <div class="reason-desc">ファイルのコピーや移動など、クリックより速くできる操作が多いです。</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">02</span>ターミナルを使ってみよう</h2>
+
+            <div class="terminal-demo">
+              <div class="terminal-titlebar">
+                <span class="tb-dot red"></span>
+                <span class="tb-dot yellow"></span>
+                <span class="tb-dot green"></span>
+                <span class="tb-title">ターミナル</span>
+              </div>
+              <div class="terminal-body">
+                <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">python --version</span></div>
+                <div class="t-line t-output">Python 3.12.0</div>
+                <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">python hello.py</span></div>
+                <div class="t-line t-output t-success">Hello, World!</div>
+                <div class="t-line t-output t-success">こんにちは！</div>
+                <div class="t-line"><span class="t-prompt">$</span> <span class="t-cursor">_</span></div>
+              </div>
+            </div>
+
+            <div class="annotation-list">
+              <div class="annotation">
+                <span class="ann-key">$ （ドル記号）</span>
+                <span class="ann-desc">「あなたが入力する場所」の目印。自分で入力する必要はありません。</span>
+              </div>
+              <div class="annotation">
+                <span class="ann-key">_ （カーソル）</span>
+                <span class="ann-desc">現在入力できる位置を示します。点滅していることが多いです。</span>
+              </div>
+              <div class="annotation">
+                <span class="ann-key">白い文字（出力）</span>
+                <span class="ann-desc">コマンドを実行した結果（プログラムの出力）です。自分では入力しません。</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">03</span>よく使う基本コマンド</h2>
+
+            <div class="command-table">
+              <div class="ct-header">
+                <span>コマンド</span>
+                <span>意味</span>
+                <span>例</span>
+              </div>
+              <div class="ct-row">
+                <code>python ファイル名</code>
+                <span>Pythonを実行する</span>
+                <code>python hello.py</code>
+              </div>
+              <div class="ct-row">
+                <code>cd フォルダ名</code>
+                <span>フォルダを移動する</span>
+                <code>cd Documents</code>
+              </div>
+              <div class="ct-row">
+                <code>ls（Mac） / dir（Win）</code>
+                <span>ファイル一覧を表示</span>
+                <code>ls</code>
+              </div>
+              <div class="ct-row">
+                <code>pip install 名前</code>
+                <span>ライブラリを追加する</span>
+                <code>pip install requests</code>
+              </div>
+              <div class="ct-row">
+                <code>clear（Mac） / cls（Win）</code>
+                <span>画面をきれいにする</span>
+                <code>clear</code>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">04</span>ターミナルの種類（早見表）</h2>
+            <div class="os-summary">
+              <div class="oss-card">
+                <div class="oss-os">🪟 Windows</div>
+                <div class="oss-tools">
+                  <span>コマンドプロンプト（cmd）</span>
+                  <span>PowerShell</span>
+                  <span>Windows Terminal</span>
+                </div>
+                <div class="oss-rec">初心者は <strong>コマンドプロンプト</strong> か <strong>VS Code内のターミナル</strong> がおすすめ</div>
+              </div>
+              <div class="oss-card">
+                <div class="oss-os">🍎 Mac</div>
+                <div class="oss-tools">
+                  <span>ターミナル（Terminal.app）</span>
+                  <span>iTerm2（高機能版）</span>
+                </div>
+                <div class="oss-rec">初心者は <strong>ターミナル</strong> か <strong>VS Code内のターミナル</strong> がおすすめ</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="page-nav-bottom">
+            <button class="page-nav-btn prev" data-goto="vscode">← VS Code とは？</button>
+            <button class="page-nav-btn next" data-goto="cmd">次へ：コマンドプロンプト →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== PAGE: CMD ===== -->
+      <article class="page" id="page-cmd" data-active="false">
+        <div class="page-hero" data-color="dark">
+          <div class="page-hero-bg"></div>
+          <div class="page-hero-content">
+            <div class="page-badge">WINDOWS</div>
+            <h1 class="page-title">コマンドプロンプト</h1>
+            <p class="page-subtitle">Windowsに昔からある黒い画面の正体</p>
+          </div>
+          <div class="page-hero-icon">🪟</div>
+        </div>
+
+        <div class="page-body">
+
+          <div class="highlight-card" data-color="yellow">
+            <div class="highlight-icon">💡</div>
+            <div>
+              <div class="highlight-title">一言で言うと</div>
+              <div class="highlight-text">コマンドプロンプト（cmd）は <strong>Windows に昔からある標準のターミナル</strong> です。<br>黒い背景に白い文字が特徴で、「あの黒い画面」と言われるものです。</div>
+            </div>
+          </div>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">01</span>どこにある？開き方</h2>
+
+            <div class="steps-list">
+              <div class="step-item">
+                <div class="step-badge">方法①</div>
+                <div class="step-content"><kbd>Win</kbd> + <kbd>R</kbd> キーを同時押し → 「ファイル名を指定して実行」が開く → <code>cmd</code> と入力 → Enter</div>
+              </div>
+              <div class="step-item">
+                <div class="step-badge">方法②</div>
+                <div class="step-content">スタートメニューを右クリック → 「ターミナル」または「コマンドプロンプト」を選択</div>
+              </div>
+              <div class="step-item">
+                <div class="step-badge">方法③</div>
+                <div class="step-content">エクスプローラーでフォルダを開き、アドレスバーに <code>cmd</code> と入力 → そのフォルダでcmdが開く（便利！）</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">02</span>画面を見てみよう</h2>
+
+            <div class="terminal-demo dark-theme">
+              <div class="terminal-titlebar dark">
+                <span class="tb-title-dark">コマンドプロンプト</span>
+                <span class="tb-controls">─ □ ×</span>
+              </div>
+              <div class="terminal-body dark">
+                <div class="t-line"><span class="t-prompt-dark">C:\Users\田中&gt;</span> <span class="t-cmd">python --version</span></div>
+                <div class="t-line t-output">Python 3.12.0</div>
+                <div class="t-line"><span class="t-prompt-dark">C:\Users\田中&gt;</span> <span class="t-cmd">python hello.py</span></div>
+                <div class="t-line t-output t-success">Hello, World!</div>
+                <div class="t-line"><span class="t-prompt-dark">C:\Users\田中&gt;</span> <span class="t-cursor">_</span></div>
+              </div>
+            </div>
+
+            <div class="annotation-list">
+              <div class="annotation">
+                <span class="ann-key">C:\Users\田中&gt;</span>
+                <span class="ann-desc">「今いる場所（フォルダのパス）」が表示されています。Cドライブ → Users → 自分のフォルダにいることがわかります。</span>
+              </div>
+              <div class="annotation">
+                <span class="ann-key">&gt;（大なり記号）</span>
+                <span class="ann-desc">入力待ちの目印。Macのターミナルの「$」と同じ役割です。</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">03</span>cmd でよく使うコマンド</h2>
+
+            <div class="command-table">
+              <div class="ct-header">
+                <span>コマンド</span>
+                <span>やること</span>
+                <span>例</span>
+              </div>
+              <div class="ct-row">
+                <code>python ファイル名.py</code>
+                <span>Pythonを実行する</span>
+                <code>python hello.py</code>
+              </div>
+              <div class="ct-row">
+                <code>cd フォルダ名</code>
+                <span>フォルダに移動する</span>
+                <code>cd Desktop</code>
+              </div>
+              <div class="ct-row">
+                <code>cd ..</code>
+                <span>ひとつ上のフォルダに戻る</span>
+                <code>cd ..</code>
+              </div>
+              <div class="ct-row">
+                <code>dir</code>
+                <span>ファイル・フォルダ一覧を表示</span>
+                <code>dir</code>
+              </div>
+              <div class="ct-row">
+                <code>cls</code>
+                <span>画面の文字を消す</span>
+                <code>cls</code>
+              </div>
+              <div class="ct-row">
+                <code>exit</code>
+                <span>ウィンドウを閉じる</span>
+                <code>exit</code>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">04</span>よくある困りごとと解決策</h2>
+
+            <div class="trouble-list">
+              <div class="trouble-item">
+                <div class="trouble-q">❓ <code>python</code> と入力したら「コマンドが見つかりません」と出た</div>
+                <div class="trouble-a">→ Pythonインストール時に <strong>「Add Python to PATH」</strong> にチェックを入れ忘れた可能性があります。Pythonを再インストールしてチェックを入れましょう。</div>
+              </div>
+              <div class="trouble-item">
+                <div class="trouble-q">❓ ファイルが実行できない（「見つかりません」エラー）</div>
+                <div class="trouble-a">→ <code>cd</code> コマンドでファイルがある <strong>フォルダに移動してから</strong> 実行してみてください。<code>dir</code> でファイルの存在を確認できます。</div>
+              </div>
+              <div class="trouble-item">
+                <div class="trouble-q">❓ 途中で止まったプログラムを終わらせたい</div>
+                <div class="trouble-a">→ <kbd>Ctrl</kbd> + <kbd>C</kbd> を押すと強制終了できます。覚えておくと便利！</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="page-nav-bottom">
+            <button class="page-nav-btn prev" data-goto="terminal">← ターミナルとは？</button>
+            <button class="page-nav-btn next" data-goto="powershell">次へ：PowerShell →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== PAGE: PowerShell ===== -->
+      <article class="page" id="page-powershell" data-active="false">
+        <div class="page-hero" data-color="purple">
+          <div class="page-hero-bg"></div>
+          <div class="page-hero-content">
+            <div class="page-badge">WINDOWS</div>
+            <h1 class="page-title">PowerShell</h1>
+            <p class="page-subtitle">コマンドプロンプトの進化版・青い画面の正体</p>
+          </div>
+          <div class="page-hero-icon">💙</div>
+        </div>
+
+        <div class="page-body">
+
+          <div class="highlight-card" data-color="purple">
+            <div class="highlight-icon">💡</div>
+            <div>
+              <div class="highlight-title">一言で言うと</div>
+              <div class="highlight-text">PowerShellは <strong>コマンドプロンプトをパワーアップさせたWindows標準のターミナル</strong> です。<br>青い（または紺の）背景が特徴で、より高度な操作ができます。</div>
+            </div>
+          </div>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">01</span>コマンドプロンプトと何が違うの？</h2>
+
+            <div class="compare-grid vertical">
+              <div class="compare-card bad">
+                <div class="compare-label">⬛ コマンドプロンプト（cmd）</div>
+                <ul class="compare-list">
+                  <li>Windowsに昔からある</li>
+                  <li>基本的な操作のみ</li>
+                  <li>コマンドが少なめ</li>
+                  <li>シンプルで覚えやすい</li>
+                  <li>Pythonの入門に十分</li>
+                </ul>
+              </div>
+              <div class="compare-arrow">→ 進化</div>
+              <div class="compare-card good">
+                <div class="compare-label">💙 PowerShell</div>
+                <ul class="compare-list">
+                  <li class="good-item">✓ Windows 10/11で標準になった</li>
+                  <li class="good-item">✓ より多くのコマンドが使える</li>
+                  <li class="good-item">✓ プログラミング的な記述ができる</li>
+                  <li class="good-item">✓ スクリプト（自動化）が書けるし</li>
+                  <li class="good-item">✓ Macのターミナルに近いコマンドも使える</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">02</span>PowerShell の開き方</h2>
+
+            <div class="steps-list">
+              <div class="step-item">
+                <div class="step-badge">方法①</div>
+                <div class="step-content"><kbd>Win</kbd> + <kbd>X</kbd> キーを同時押し → 「ターミナル」を選択（Windows 11では標準でPowerShellが開く）</div>
+              </div>
+              <div class="step-item">
+                <div class="step-badge">方法②</div>
+                <div class="step-content">スタートメニューで「PowerShell」と検索 → クリック</div>
+              </div>
+              <div class="step-item">
+                <div class="step-badge tip">💡 おすすめ</div>
+                <div class="step-content">VS Code を開いてターミナルパネルを使うのが一番便利！上のメニュー「ターミナル」→「新しいターミナル」で開けます。</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">03</span>PowerShell の画面</h2>
+
+            <div class="terminal-demo ps-theme">
+              <div class="terminal-titlebar ps">
+                <span class="tb-title-dark">Windows PowerShell</span>
+                <span class="tb-controls">─ □ ×</span>
+              </div>
+              <div class="terminal-body ps">
+                <div class="t-line"><span class="t-prompt-ps">PS C:\Users\田中&gt;</span> <span class="t-cmd">python --version</span></div>
+                <div class="t-line t-output">Python 3.12.0</div>
+                <div class="t-line"><span class="t-prompt-ps">PS C:\Users\田中&gt;</span> <span class="t-cmd">python hello.py</span></div>
+                <div class="t-line t-output t-success">Hello, World!</div>
+                <div class="t-line"><span class="t-prompt-ps">PS C:\Users\田中&gt;</span> <span class="t-cursor">_</span></div>
+              </div>
+            </div>
+
+            <div class="annotation-list">
+              <div class="annotation">
+                <span class="ann-key">PS C:\Users\田中&gt;</span>
+                <span class="ann-desc">「PS」がPowerShellの目印です。あとはコマンドプロンプトとほぼ同じ見た目です。</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">04</span>初心者がPowerShellで使うコマンド</h2>
+
+            <p class="section-note">コマンドプロンプトのコマンドはほぼそのまま使えます。追加で覚えると便利なものを紹介します。</p>
+
+            <div class="command-table">
+              <div class="ct-header">
+                <span>コマンド</span>
+                <span>やること</span>
+                <span>メモ</span>
+              </div>
+              <div class="ct-row">
+                <code>ls</code>
+                <span>ファイル一覧（cmdの dirと同じ）</span>
+                <span>Macと同じ書き方！</span>
+              </div>
+              <div class="ct-row">
+                <code>cd</code>
+                <span>フォルダ移動（cmdと同じ）</span>
+                <span>—</span>
+              </div>
+              <div class="ct-row">
+                <code>Clear-Host / clear</code>
+                <span>画面を消す</span>
+                <span>cls も使える</span>
+              </div>
+              <div class="ct-row">
+                <code>python hello.py</code>
+                <span>Pythonを実行（cmdと同じ）</span>
+                <span>—</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">05</span>⚠ PowerShell でよくあるエラー</h2>
+
+            <div class="trouble-list">
+              <div class="trouble-item error">
+                <div class="trouble-q">❓ 「実行ポリシー」エラーが出てスクリプトが動かない</div>
+                <div class="trouble-a">→ Windows の安全機能です。以下のコマンドを <strong>管理者として実行</strong> したPowerShellで入力することで解除できます：<br><code>Set-ExecutionPolicy RemoteSigned</code></div>
+              </div>
+              <div class="trouble-item">
+                <div class="trouble-q">❓ cmdで動いたのにPowerShellで動かない</div>
+                <div class="trouble-a">→ 一部のコマンドはcmdとPowerShellで書き方が違います。Pythonの実行に関しては基本的に同じです。</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="page-nav-bottom">
+            <button class="page-nav-btn prev" data-goto="cmd">← コマンドプロンプト</button>
+            <button class="page-nav-btn next" data-goto="comparison">次へ：どれを使えばいい？ →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== PAGE: Comparison ===== -->
+      <article class="page" id="page-comparison" data-active="false">
+        <div class="page-hero" data-color="accent">
+          <div class="page-hero-bg"></div>
+          <div class="page-hero-content">
+            <div class="page-badge">SUMMARY</div>
+            <h1 class="page-title">どれを使えばいい？</h1>
+            <p class="page-subtitle">結局どのツールを選べばいいかを整理します</p>
+          </div>
+          <div class="page-hero-icon">⚖️</div>
+        </div>
+
+        <div class="page-body">
+
+          <div class="highlight-card" data-color="accent">
+            <div class="highlight-icon">🎯</div>
+            <div>
+              <div class="highlight-title">結論：初心者は VS Code 内のターミナルを使おう</div>
+              <div class="highlight-text">別でターミナルを開かなくても、VS Code の中にターミナルがあります。<strong>エディタ上部の「ターミナル」メニュー → 「新しいターミナル」</strong> で開けます。OS を問わず同じ操作です。</div>
+            </div>
+          </div>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">01</span>ツール一覧と使いどころ</h2>
+
+            <div class="big-compare">
+              <div class="bc-row header">
+                <div class="bc-tool">ツール</div>
+                <div class="bc-os">対応OS</div>
+                <div class="bc-use">主な用途</div>
+                <div class="bc-rec">初心者向け？</div>
+              </div>
+              <div class="bc-row highlight-row">
+                <div class="bc-tool"><span class="bc-icon">📝</span><strong>VS Code 内ターミナル</strong></div>
+                <div class="bc-os">Windows / Mac / Linux</div>
+                <div class="bc-use">Pythonの実行・pip・全般</div>
+                <div class="bc-rec"><span class="rec-badge best">◎ おすすめ</span></div>
+              </div>
+              <div class="bc-row">
+                <div class="bc-tool"><span class="bc-icon">⬛</span>コマンドプロンプト</div>
+                <div class="bc-os">Windows のみ</div>
+                <div class="bc-use">基本操作・Python実行</div>
+                <div class="bc-rec"><span class="rec-badge good">○ 使える</span></div>
+              </div>
+              <div class="bc-row">
+                <div class="bc-tool"><span class="bc-icon">💙</span>PowerShell</div>
+                <div class="bc-os">Windows (10/11)</div>
+                <div class="bc-use">全般・自動化</div>
+                <div class="bc-rec"><span class="rec-badge ok">△ 少し難しい</span></div>
+              </div>
+              <div class="bc-row">
+                <div class="bc-tool"><span class="bc-icon">🍎</span>Terminal.app</div>
+                <div class="bc-os">Mac のみ</div>
+                <div class="bc-use">全般・Python実行</div>
+                <div class="bc-rec"><span class="rec-badge good">○ 使える</span></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">02</span>場面別おすすめ</h2>
+
+            <div class="scene-cards">
+              <div class="scene-card">
+                <div class="scene-title">🐍 Python のプログラムを実行したい</div>
+                <div class="scene-answer">→ <strong>VS Code のターミナル</strong> に <code>python ファイル名.py</code> と入力</div>
+              </div>
+              <div class="scene-card">
+                <div class="scene-title">📦 pip でライブラリを追加したい</div>
+                <div class="scene-answer">→ <strong>VS Code のターミナル</strong> に <code>pip install ライブラリ名</code> と入力</div>
+              </div>
+              <div class="scene-card">
+                <div class="scene-title">📁 フォルダの中身を確認したい</div>
+                <div class="scene-answer">→ <strong>VS Code のターミナル</strong> で <code>ls</code>（Mac）または <code>dir</code>（Windows）</div>
+              </div>
+              <div class="scene-card">
+                <div class="scene-title">🆚 どのバージョンか確認したい</div>
+                <div class="scene-answer">→ どのターミナルでも <code>python --version</code> で確認できます</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2 class="section-title"><span class="section-num">03</span>VS Code 内ターミナルの開き方</h2>
+
+            <div class="steps-list">
+              <div class="step-item">
+                <div class="step-badge">手順①</div>
+                <div class="step-content">VS Code を開く</div>
+              </div>
+              <div class="step-item">
+                <div class="step-badge">手順②</div>
+                <div class="step-content">上のメニューバーから <strong>「ターミナル」</strong> をクリック → <strong>「新しいターミナル」</strong> を選択</div>
+              </div>
+              <div class="step-item">
+                <div class="step-badge">手順③</div>
+                <div class="step-content">画面下半分にターミナルが開く。あとは <code>python ファイル名.py</code> を入力するだけ！</div>
+              </div>
+              <div class="step-item">
+                <div class="step-badge">ショートカット</div>
+                <div class="step-content"><kbd>Ctrl</kbd> + <kbd>`</kbd>（バッククォート）キーでターミナルのON/OFFを切り替えられます。Macも同じです。</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="final-cta">
+            <div class="cta-title">🎉 ツールの基礎がわかったら次のステップへ！</div>
+            <div class="cta-desc">開発環境のセットアップ（Python・VS Codeのインストール）がまだの方はこちら</div>
+            <div class="cta-buttons">
+              <a href="setup.html" class="cta-btn primary">⚙ セットアップガイドへ →</a>
+              <a href="program.html" class="cta-btn secondary">📖 学習に戻る →</a>
+            </div>
+          </div>
+
+          <div class="page-nav-bottom">
+            <button class="page-nav-btn prev" data-goto="powershell">← PowerShell</button>
+          </div>
+        </div>
+      </article>
+
+    </main>
+  </div>
+
+  <script src="tools.js"></script>
+</body>
+</html>
