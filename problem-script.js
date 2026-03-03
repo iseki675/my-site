@@ -11,7 +11,7 @@ const PROBLEMS = [
     description: "画面に「Hello, World!」と表示するプログラムを書いてください。",
     hint: "print関数を使います",
     answer: `print("Hello, World!")`,
-    explanation: "ここに解説を書いてください（print関数は標準出力に文字列を表示する基本的な関数です...など）"
+    explanation: "print関数は標準出力に文字列を表示する基本的な関数です"
   },
   {
     id: "p002",
@@ -20,7 +20,10 @@ const PROBLEMS = [
     difficulty: "easy",
     description: "以下の3行を順番に表示するプログラムを書いてください：\n1. おはよう\n2. こんにちは\n3. こんばんは",
     hint: "print関数を3回使うか、改行文字\\nを使います",
-    answer: `# 答えをここに書いてください`,
+    answer: `print("おはよう\nこんにちは\nこんばんわ")　もしくは
+             print("おはよう")
+             print("こんにちは")
+             print("こんばんわ")`,
     explanation: "ここに解説を書いてください"
   },
   {
