@@ -20,7 +20,7 @@ const PROBLEMS = [
     difficulty: "easy",
     description: "以下の3行を順番に表示するプログラムを書いてください：\n1. おはよう\n2. こんにちは\n3. こんばんは",
     hint: "print関数を3回使うか、改行文字\\nを使います",
-    answer: `print("おはよう\\nこんにちは\\nこんばんわ")　もしくは
+    answer: `print("おはよう\\nこんにちは\\nこんばんわ")　もしくは\n
     print("おはよう")
     print("こんにちは")
     print("こんばんわ")`,
@@ -33,8 +33,9 @@ const PROBLEMS = [
     difficulty: "easy",
     description: "変数nameに「山田太郎」を代入し、「こんにちは、山田太郎さん」と表示してください。",
     hint: "変数への代入は = を使います",
-    answer: `# 答えをここに書いてください`,
-    explanation: "ここに解説を書いてください"
+    answer: `name='山田太郎'\n
+             print(f"こんにちは、{name}さん");`,
+    explanation: "変数に値を代入するには=を使います。f文字列を使うと、変数の値の埋め込みが簡単になります。{name}の部分が変数nameの値に置き換わります。"
   },
   {
     id: "p004",
