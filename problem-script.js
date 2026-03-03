@@ -24,7 +24,7 @@ const PROBLEMS = [
              print("おはよう")
              print("こんにちは")
              print("こんばんわ")`,
-    explanation: "ここに解説を書いてください"
+    explanation: "\nはプログラムで改行を表す特殊文字です。また、print関数は複数回呼び出すことができます。"
   },
   {
     id: "p003",
