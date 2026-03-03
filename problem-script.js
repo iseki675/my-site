@@ -20,7 +20,7 @@ const PROBLEMS = [
     difficulty: "easy",
     description: "以下の3行を順番に表示するプログラムを書いてください：\n1. おはよう\n2. こんにちは\n3. こんばんは",
     hint: "print関数を3回使うか、改行文字\\nを使います",
-    answer: `print("おはよう\nこんにちは\nこんばんわ")　もしくは
+    answer: `print("おはよう\\nこんにちは\\nこんばんわ")　もしくは
              print("おはよう")
              print("こんにちは")
              print("こんばんわ")`,
