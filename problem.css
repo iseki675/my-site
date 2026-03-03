@@ -1,0 +1,730 @@
+/* ===========================
+   ProGram 問題集 — problem-style.css
+   =========================== */
+
+/* --- リセット & 変数 --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0d0f14;
+  --bg2:       #141720;
+  --bg3:       #1c2030;
+  --line:      #2a2f42;
+  --accent:    #e8ff5a;
+  --accent2:   #5af0e8;
+  --accent3:   #ff6b6b;
+  --green:     #6bffb8;
+  --orange:    #ffa86b;
+  --purple:    #c792ea;
+  --text:      #e4e8f0;
+  --text-dim:  #7a84a0;
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'Noto Sans JP', sans-serif;
+  --font-code: 'IBM Plex Mono', monospace;
+  --radius:    12px;
+  --radius-lg: 20px;
+  --shadow:    0 8px 40px rgba(0,0,0,.5);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* --- スクロールバー --- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ===========================
+   ヘッダー（共通）
+   =========================== */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(13,15,20,.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+.logo .accent { color: var(--accent); }
+
+.main-nav {
+  margin-left: auto;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .9rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: .5rem 1rem;
+  border-radius: 8px;
+  transition: .2s;
+}
+.nav-link:hover {
+  color: var(--accent2);
+  background: rgba(90,240,232,.08);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: .4rem;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: .3s;
+}
+
+.progress-bar {
+  height: 2px;
+  background: var(--accent);
+  width: 0%;
+  transition: width .1s;
+  position: absolute;
+  bottom: -1px; left: 0;
+}
+
+/* ドロワー */
+.drawer {
+  position: fixed;
+  top: 72px; right: 0;
+  width: 260px;
+  height: calc(100vh - 72px);
+  background: var(--bg2);
+  border-left: 1px solid var(--line);
+  z-index: 99;
+  transform: translateX(100%);
+  transition: transform .3s ease;
+  overflow-y: auto;
+  padding: 1rem;
+}
+.drawer.open { transform: translateX(0); }
+.drawer ul { list-style: none; }
+.drawer a {
+  display: block;
+  padding: .6rem 1rem;
+  font-size: .85rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: .2s;
+}
+.drawer a:hover { color: var(--accent); background: rgba(232,255,90,.08); }
+
+.drawer-overlay {
+  position: fixed;
+  inset: 72px 0 0 0;
+  background: rgba(0,0,0,.6);
+  z-index: 98;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.drawer-overlay.open { opacity: 1; pointer-events: auto; }
+
+/* ===========================
+   ヒーロー（問題集用）
+   =========================== */
+.hero-problem {
+  padding: 120px 2rem 60px;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 30%, rgba(232,255,90,.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.hero-label {
+  display: inline-block;
+  font-family: var(--font-code);
+  font-size: .75rem;
+  color: var(--orange);
+  border: 1px solid rgba(255,168,107,.3);
+  padding: .3rem .8rem;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+  letter-spacing: .1em;
+}
+
+.hero-title {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.hero-desc {
+  font-size: .95rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.difficulty-guide {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.diff-item {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.diff-badge {
+  font-family: var(--font-code);
+  font-size: .75rem;
+  padding: .2rem .6rem;
+  border-radius: 100px;
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+
+.diff-badge.easy {
+  background: rgba(107,255,184,.15);
+  color: var(--green);
+  border: 1px solid rgba(107,255,184,.3);
+}
+
+.diff-badge.normal {
+  background: rgba(90,240,232,.15);
+  color: var(--accent2);
+  border: 1px solid rgba(90,240,232,.3);
+}
+
+.diff-badge.hard {
+  background: rgba(255,168,107,.15);
+  color: var(--orange);
+  border: 1px solid rgba(255,168,107,.3);
+}
+
+.diff-desc {
+  font-size: .85rem;
+  color: var(--text-dim);
+}
+
+/* ===========================
+   フィルター
+   =========================== */
+.filter-section {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 3rem;
+}
+
+.filter-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: .85rem;
+  color: var(--text-dim);
+}
+
+.filter-buttons {
+  display: flex;
+  gap: .5rem;
+}
+
+.filter-btn {
+  font-family: var(--font-code);
+  font-size: .8rem;
+  padding: .4rem 1rem;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: .2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.stats {
+  margin-left: auto;
+  font-family: var(--font-code);
+  font-size: .9rem;
+  color: var(--text-dim);
+}
+
+.stats #solved-count {
+  color: var(--green);
+  font-weight: 700;
+}
+
+/* ===========================
+   問題カード
+   =========================== */
+.main-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+.problems-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.problem-card {
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .5s, transform .5s, border-color .3s;
+}
+
+.problem-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.problem-card:hover {
+  border-color: rgba(255,255,255,.1);
+}
+
+/* 難易度別のアクセントカラー */
+.problem-card.easy::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--green);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+.problem-card.normal::before {
+  background: var(--accent2);
+}
+
+.problem-card.hard::before {
+  background: var(--orange);
+}
+
+/* 完了済みスタイル */
+.problem-card.solved {
+  opacity: .7;
+  background: rgba(107,255,184,.03);
+  border-color: rgba(107,255,184,.15);
+}
+
+/* ヘッダー部分 */
+.problem-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.problem-meta {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+
+.problem-number {
+  font-family: var(--font-code);
+  font-size: .75rem;
+  color: var(--text-dim);
+  letter-spacing: .05em;
+}
+
+.problem-category {
+  font-size: .75rem;
+  background: var(--bg3);
+  color: var(--text-dim);
+  padding: .15rem .6rem;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+}
+
+.problem-difficulty {
+  font-family: var(--font-code);
+  font-size: .7rem;
+  padding: .15rem .5rem;
+  border-radius: 100px;
+  font-weight: 600;
+}
+
+.problem-difficulty.easy {
+  background: rgba(107,255,184,.15);
+  color: var(--green);
+}
+
+.problem-difficulty.normal {
+  background: rgba(90,240,232,.15);
+  color: var(--accent2);
+}
+
+.problem-difficulty.hard {
+  background: rgba(255,168,107,.15);
+  color: var(--orange);
+}
+
+/* チェックボタン */
+.check-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: .25rem;
+  color: var(--text-dim);
+  transition: .2s;
+}
+
+.check-btn:hover {
+  color: var(--green);
+}
+
+.check-btn .check-mark {
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.check-btn.checked {
+  color: var(--green);
+}
+
+.check-btn.checked .check-mark {
+  opacity: 1;
+}
+
+/* 問題内容 */
+.problem-title {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: .75rem;
+  color: var(--text);
+}
+
+.problem-description {
+  font-size: .92rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* ヒント */
+.hint-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: .4rem .8rem;
+  font-size: .85rem;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: .2s;
+  margin-bottom: .75rem;
+}
+
+.hint-btn:hover {
+  border-color: rgba(255,212,59,.3);
+  color: #ffd43b;
+}
+
+.hint-btn.active {
+  background: rgba(255,212,59,.08);
+  border-color: rgba(255,212,59,.3);
+  color: #ffd43b;
+}
+
+.hint-icon {
+  font-size: 1rem;
+}
+
+.hint-content {
+  display: none;
+  background: rgba(255,212,59,.06);
+  border: 1px solid rgba(255,212,59,.2);
+  border-radius: var(--radius);
+  padding: .75rem 1rem;
+  font-size: .85rem;
+  color: #ffd43b;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.hint-content.show {
+  display: block;
+}
+
+/* アクション部分 */
+.problem-actions {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.toggle-answer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: .6rem 1.2rem;
+  font-size: .85rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: .2s;
+}
+
+.toggle-answer-btn:hover {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.btn-arrow {
+  transition: transform .3s;
+  font-size: .75rem;
+}
+
+/* 答えセクション */
+.answer-section {
+  display: none;
+  margin-top: 1.5rem;
+  animation: slideDown .3s ease;
+}
+
+.answer-section.show {
+  display: block;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.answer-header,
+.explanation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .75rem;
+}
+
+.answer-label,
+.explanation-label {
+  font-family: var(--font-code);
+  font-size: .8rem;
+  color: var(--accent2);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.explanation-label {
+  color: var(--purple);
+}
+
+/* コピーボタン */
+.copy-btn {
+  font-family: var(--font-code);
+  font-size: .7rem;
+  color: var(--text-dim);
+  background: none;
+  border: 1px solid var(--line);
+  padding: .2rem .6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.copy-btn.copied {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+/* コードブロック */
+.answer-code {
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.answer-code pre {
+  font-family: var(--font-code);
+  font-size: .83rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+/* 解説 */
+.explanation-content {
+  background: rgba(199,146,234,.06);
+  border: 1px solid rgba(199,146,234,.2);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  font-size: .9rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+/* ===========================
+   フッター
+   =========================== */
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--bg2);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-logo {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.footer-copy {
+  font-size: .8rem;
+  color: var(--text-dim);
+}
+
+/* ===========================
+   レスポンシブ
+   =========================== */
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .filter-buttons {
+    justify-content: stretch;
+    width: 100%;
+  }
+
+  .filter-btn {
+    flex: 1;
+  }
+
+  .stats {
+    margin-left: 0;
+    text-align: center;
+    width: 100%;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .problem-card {
+    padding: 1.2rem;
+  }
+
+  .problem-header {
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .problem-meta {
+    width: 100%;
+  }
+}
