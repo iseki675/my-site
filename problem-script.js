@@ -217,8 +217,11 @@ else:
     description:
       "リストを受け取り、最大値と最小値をタプルで返す関数 find_min_max() を作成してください。\n例：find_min_max([3, 1, 4, 1, 5]) → (1, 5)",
     hint: "def文で関数を定義し、min()とmax()を使います",
-    answer: `# 答えをここに書いてください`,
-    explanation: "ここに解説を書いてください"
+    answer: `def find_min_max(lst):
+    return (min(lst), max(lst))
+
+print(find_min_max([3, 1, 4, 1, 5]))  `,
+    explanation: "一行目は関数の定義をしています。defは関数を作るキーワード、find_min_maxが関数名、lstは関数に渡すリストを受け取る引数です。二行目にリストの中の最小値と最大値を求めてその値を返しています。3行目は関数を呼び出してその結果を表示させています。"
   },
   {
     id: "p014",
