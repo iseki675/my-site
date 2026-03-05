@@ -231,8 +231,17 @@ print(find_min_max([3, 1, 4, 1, 5]))  `,
     description:
       "入力された文字列を逆順にして表示する関数 reverse_string() を作成してください。\n例：reverse_string(\"Hello\") → \"olleH\"",
     hint: "スライス[::-1]を使うか、reversed()関数を使います",
-    answer: `# 答えをここに書いてください`,
-    explanation: "ここに解説を書いてください"
+    answer: `Text = input("文字を入力してください。:")
+
+def reverse_string1(char): #①スライス[::-1]を使用
+    return char[::-1]
+
+def reverse_string2(char): #②reversed関数を使用
+    return ''.join(reversed(char))
+    
+print(reverse_string1(Text))
+print(reverse_string2(Text))`,
+    explanation: "文字列を反転するコードを2通り解説します。まず、①の方ですが、これはスライスといって[::-1]はPython独自の書き方で、「末尾から先頭に向かって一文字ずつ取り出す」という意味です。次に、②についてですが、reversed(char)は文字列を逆順に並べます。ただし、バラバラで取り出すので''.join(...)を使いバラバラな文字を空文字でつなげて1つの文字列に戻します。例えば、abcという文字列を入力したら、reversed関数は['c','b','a']と1つの文字列を三つの文字にバラバラにしてしまうので''.join(..)を使ってcbaとくっつけて元に戻してあげます。つまり、反転にはreversed()関数と''.join(..)はセットでなければいけない。"
   },
   {
     id: "p015",
@@ -242,8 +251,21 @@ print(find_min_max([3, 1, 4, 1, 5]))  `,
     description:
       "n番目までのフィボナッチ数列を表示するプログラムを書いてください。\n例：n=10の場合 → 0, 1, 1, 2, 3, 5, 8, 13, 21, 34",
     hint: "前の2つの数を足して次の数を作ります",
-    answer: `# 答えをここに書いてください`,
-    explanation: "ここに解説を書いてください"
+    answer: `def fibonacci(n):
+    """n番目までのフィボナッチ数列をリストで返す"""
+    if n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    else:
+        fib = fibonacci(n - 1)        # n-1番目までのリストを取得
+        fib.append(fib[-1] + fib[-2]) # 最後の2つを足して追加
+        return fib
+
+number = int(input("何番目までのフィボナッチ数列を表示しますか？: "))
+result = fibonacci(number)
+print(result)`,
+    explanation: "今回はフィボナッチ数列を表示するプログラムです。フィボナッチ数列とは、直前の2つの数を足すと次の数になる数列のことです。このコードの核となるのが再帰という考え方です。再帰とは自分自身を呼び出す関数のことで、再帰には①必ず終わる条件を作る、②呼び出すたびに問題を小さくする、という2つのルールがあります。今回のコードでは、nが1か2の時に答えを返すのが①、fibonacci(n-1)で問題を小さくしているのが②にあたります。あとは持ち帰ったリストに末尾2つの合計を追加するだけでフィボナッチ数列が完成します。forやwhileでも同じ結果が得られるので、ぜひ自分で書いてみてください！"
   },
   {
     id: "p016",
